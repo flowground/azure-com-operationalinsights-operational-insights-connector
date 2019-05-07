@@ -1,0 +1,407 @@
+{
+    "title": "Azure Log Analytics",
+    "description": "Azure Log Analytics API reference",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/operationalinsights-OperationalInsights/2015-11-01-preview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists all of the available OperationalInsights Rest API operations.",
+            "description": "Lists all of the available OperationalInsights Rest API operations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Workspaces_List": {
+            "main": "./lib/actions/Workspaces_List.js",
+            "title": "Gets the workspaces in a subscription.",
+            "description": "Gets the workspaces in a subscription.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Workspaces_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Workspaces_ListByResourceGroup": {
+            "main": "./lib/actions/Workspaces_ListByResourceGroup.js",
+            "title": "Gets workspaces in a resource group.",
+            "description": "Gets workspaces in a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Workspaces_ListByResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Workspaces_Delete": {
+            "main": "./lib/actions/Workspaces_Delete.js",
+            "title": "Deletes a workspace instance.",
+            "description": "Deletes a workspace instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Workspaces_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Workspaces_Get": {
+            "main": "./lib/actions/Workspaces_Get.js",
+            "title": "Gets a workspace instance.",
+            "description": "Gets a workspace instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Workspaces_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Workspaces_Update": {
+            "main": "./lib/actions/Workspaces_Update.js",
+            "title": "Updates a workspace.",
+            "description": "Updates a workspace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Workspaces_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Workspaces_CreateOrUpdate": {
+            "main": "./lib/actions/Workspaces_CreateOrUpdate.js",
+            "title": "Create or update a workspace.",
+            "description": "Create or update a workspace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Workspaces_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataSources_ListByWorkspace": {
+            "main": "./lib/actions/DataSources_ListByWorkspace.js",
+            "title": "Gets the first page of data source instances in a workspace with the link to the next page.",
+            "description": "Gets the first page of data source instances in a workspace with the link to the next page.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataSources_ListByWorkspace.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataSources_Delete": {
+            "main": "./lib/actions/DataSources_Delete.js",
+            "title": "Deletes a data source instance.",
+            "description": "Deletes a data source instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataSources_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataSources_Get": {
+            "main": "./lib/actions/DataSources_Get.js",
+            "title": "Gets a datasource instance.",
+            "description": "Gets a datasource instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataSources_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DataSources_CreateOrUpdate": {
+            "main": "./lib/actions/DataSources_CreateOrUpdate.js",
+            "title": "Create or update a data source.",
+            "description": "Create or update a data source.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DataSources_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Workspaces_ListIntelligencePacks": {
+            "main": "./lib/actions/Workspaces_ListIntelligencePacks.js",
+            "title": "Lists all the intelligence packs possible and whether they are enabled or disabled for a given workspace.",
+            "description": "Lists all the intelligence packs possible and whether they are enabled or disabled for a given workspace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Workspaces_ListIntelligencePacks.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Workspaces_DisableIntelligencePack": {
+            "main": "./lib/actions/Workspaces_DisableIntelligencePack.js",
+            "title": "Disables an intelligence pack for a given workspace.",
+            "description": "Disables an intelligence pack for a given workspace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Workspaces_DisableIntelligencePack.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Workspaces_EnableIntelligencePack": {
+            "main": "./lib/actions/Workspaces_EnableIntelligencePack.js",
+            "title": "Enables an intelligence pack for a given workspace.",
+            "description": "Enables an intelligence pack for a given workspace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Workspaces_EnableIntelligencePack.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LinkedServices_ListByWorkspace": {
+            "main": "./lib/actions/LinkedServices_ListByWorkspace.js",
+            "title": "Gets the linked services instances in a workspace.",
+            "description": "Gets the linked services instances in a workspace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LinkedServices_ListByWorkspace.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LinkedServices_Delete": {
+            "main": "./lib/actions/LinkedServices_Delete.js",
+            "title": "Deletes a linked service instance.",
+            "description": "Deletes a linked service instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LinkedServices_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LinkedServices_Get": {
+            "main": "./lib/actions/LinkedServices_Get.js",
+            "title": "Gets a linked service instance.",
+            "description": "Gets a linked service instance.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LinkedServices_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "LinkedServices_CreateOrUpdate": {
+            "main": "./lib/actions/LinkedServices_CreateOrUpdate.js",
+            "title": "Create or update a linked service.",
+            "description": "Create or update a linked service.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/LinkedServices_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Workspaces_ListManagementGroups": {
+            "main": "./lib/actions/Workspaces_ListManagementGroups.js",
+            "title": "Gets a list of management groups connected to a workspace.",
+            "description": "Gets a list of management groups connected to a workspace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Workspaces_ListManagementGroups.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Workspaces_GetSharedKeys": {
+            "main": "./lib/actions/Workspaces_GetSharedKeys.js",
+            "title": "Gets the shared keys for a workspace.",
+            "description": "Gets the shared keys for a workspace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Workspaces_GetSharedKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Workspaces_ListUsages": {
+            "main": "./lib/actions/Workspaces_ListUsages.js",
+            "title": "Gets a list of usage metrics for a workspace.",
+            "description": "Gets a list of usage metrics for a workspace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Workspaces_ListUsages.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

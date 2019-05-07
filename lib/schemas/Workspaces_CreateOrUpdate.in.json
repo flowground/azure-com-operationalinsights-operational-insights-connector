@@ -1,0 +1,137 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "workspaceName": {
+            "required": true,
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 63,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9-]+[A-Za-z0-9]$"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "description": "The resource definition.",
+                    "properties": {
+                        "id": {
+                            "description": "Resource Id",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "Resource location",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Resource type",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "The top level Workspace resource container.",
+            "properties": {
+                "eTag": {
+                    "description": "The ETag of the workspace.",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Workspace properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "customerId": {
+                            "description": "The ID associated with the workspace.  Setting this value at creation time allows the workspace being created to be linked to an existing workspace.",
+                            "type": "string"
+                        },
+                        "portalUrl": {
+                            "description": "The URL of the Operational Insights portal for this workspace.  This value is set on the service side and read-only on the client side.",
+                            "type": "string"
+                        },
+                        "provisioningState": {
+                            "description": "The provisioning state of the workspace.",
+                            "enum": [
+                                "Creating",
+                                "Succeeded",
+                                "Failed",
+                                "Canceled",
+                                "Deleting",
+                                "ProvisioningAccount"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "EntityStatus"
+                            }
+                        },
+                        "retentionInDays": {
+                            "description": "The workspace data retention in days. -1 means Unlimited retention for the Unlimited Sku. 730 days is the maximum allowed for all other Skus. ",
+                            "format": "int32",
+                            "maximum": 730,
+                            "minimum": -1,
+                            "type": "integer"
+                        },
+                        "sku": {
+                            "description": "The SKU of the workspace.",
+                            "properties": {
+                                "name": {
+                                    "description": "The name of the SKU.",
+                                    "enum": [
+                                        "Free",
+                                        "Standard",
+                                        "Premium",
+                                        "Unlimited",
+                                        "PerNode",
+                                        "PerGB2018",
+                                        "Standalone"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "SkuNameEnum"
+                                    }
+                                }
+                            },
+                            "required": [
+                                "name"
+                            ],
+                            "type": "object"
+                        },
+                        "source": {
+                            "description": "The source of the workspace.  Source defines where the workspace was created. 'Azure' implies it was created in Azure.  'External' implies it was created via the Operational Insights Portal. This value is set on the service side and read-only on the client side.",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "x-ms-azure-resource": true,
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
